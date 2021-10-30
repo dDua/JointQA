@@ -13,7 +13,7 @@ from ignite.metrics import Accuracy, RunningAverage
 from ignite.contrib.handlers import ProgressBar, PiecewiseLinear
 from ignite.contrib.handlers.tensorboard_logger import TensorboardLogger, OutputHandler, OptimizerParamsHandler
 from transformers import T5Tokenizer
-from model import JointModel
+from model import GenerativeSelector
 from transformers import AdamW
 from t5_config import get_arguments as get_arguments_hotpot
 from data_processing import HotpotQADataAllPairs
@@ -44,7 +44,7 @@ def train():
 
     logger.info("Prepare tokenizer, pretrained model and optimizer - add special tokens for fine-tuning")
 
-    tokenizer_class, model_class, dataset_class = T5Tokenizer, JointModel, HotpotQADataAllPairs
+    tokenizer_class, model_class, dataset_class = T5Tokenizer, GenerativeSelector, HotpotQADataAllPairs
 
     tokenizer = tokenizer_class.from_pretrained(args.model_checkpoint)
     tokenizer.add_special_tokens({"bos_token": "<bos>", "eos_token": "<eos>", "pad_token": "<pad>",

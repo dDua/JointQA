@@ -21,10 +21,10 @@ def get_arguments():
     parser.add_argument("--distributed", action='store_true', default=True)
     parser.add_argument("--lazy", default=False)
     parser.add_argument("--sf_only", default=False)
-    parser.add_argument("--reasoning_file", default="/mnt/750GB/data/Adversarial-MultiHopQA/data/hotpotqa/reasoning_splits/reasoning.json")
+    parser.add_argument("--reasoning_file", default="/mnt/750GB/data/Adversarial-MultiHopQA/data/hotpotqa/reasoning.json")
 
     ## Model parameters
-    parser.add_argument("--model_checkpoint", type=str, default="t5-small")
+    parser.add_argument("--model_checkpoint", type=str, default="t5-base")
     parser.add_argument("--lowercase", action='store_true', default=True)
     parser.add_argument("--ans_coef", type=float, default=1.0)
     parser.add_argument("--qg_coef", type=float, default=1.0)
@@ -42,13 +42,13 @@ def get_arguments():
     parser.add_argument("--append_another_bos", action='store_true', default=False)
 
     # Training-related parameters
-    parser.add_argument("--num_negative", default=4, type=int,
+    parser.add_argument("--num_negative", default=45, type=int,
                         help="Batch size per GPU/CPU for training.")
-    parser.add_argument("--train_batch_size", default=2, type=int,
+    parser.add_argument("--train_batch_size", default=1, type=int,
                         help="Batch size per GPU/CPU for training.")
-    parser.add_argument("--predict_batch_size", default=2, type=int,
+    parser.add_argument("--predict_batch_size", default=1, type=int,
                         help="Batch size per GPU/CPU for evaluation.")
-    parser.add_argument("--lr", default=5e-04, type=float,
+    parser.add_argument("--lr", default=5e-05, type=float,
                         help="The initial learning rate for Adam.")
     parser.add_argument("--warmup_proportion", default=0.01, type=float,
                         help="Weight decay if we apply some.")

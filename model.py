@@ -2,7 +2,7 @@ import torch
 from torch import nn
 from transformers.modeling_t5 import T5ForConditionalGeneration, T5Block, T5LayerNorm
 
-class JointModel(T5ForConditionalGeneration):
+class GenerativeSelector(T5ForConditionalGeneration):
     def __init__(self, config, supervision=None, ans_sym_id=None, max_ans_len=None, tokenizer=None):
         super().__init__(config)
         self.cij_prior = nn.Linear(config.d_model, 1)
